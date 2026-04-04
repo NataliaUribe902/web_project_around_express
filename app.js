@@ -1,13 +1,11 @@
 const express = require("express");
-const cards = require("./data/cards");
 const app = express();
 const { PORT = 3000 } = process.env;
 const router = require("./routes/users");
+const routerCards = require("./routes/cards");
 
-app.get("/cards", (req, res) => {
-  res.send(cards);
-});
 app.use("/", router);
+app.use("/", routerCards);
 app.use((req, res) => {
   res.status(404).json({ message: "Recurso solicitado no encontrado" });
 });
