@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const dataPath = path.join(__dirname, "../data", "cards.json");
 routerCards.get("/cards", (req, res) => {
-  fs.readFile(dataPath, { encodig: "utf-8" }, (err, data) => {
+  fs.readFile(dataPath, { encoding: "utf-8" }, (err, data) => {
     if (err) {
       res.status(500).send({ message: "ID de card no encontrada" });
       return;
