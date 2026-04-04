@@ -1,9 +1,9 @@
-const router = require("express").Router();
+const routerUsers = require("express").Router();
 const path = require("path");
 const fs = require("fs");
 const dataPath = path.join(__dirname, "../data", "users.json");
 
-router.get("/users", (req, res) => {
+routerUsers.get("/users", (req, res) => {
   fs.readFile(dataPath, { encoding: "utf8" }, (err, data) => {
     if (err) {
       res.status(500).send({ message: "usuarios no encontrados" });
@@ -13,7 +13,7 @@ router.get("/users", (req, res) => {
     res.send(users);
   });
 });
-router.get("/users/:id", (req, res) => {
+routerUsers.get("/users/:id", (req, res) => {
   const { id } = req.params;
   fs.readFile(dataPath, { encoding: "utf8" }, (err, data) => {
     if (err) {
@@ -32,4 +32,4 @@ router.get("/users/:id", (req, res) => {
   });
 });
 
-module.exports = router;
+module.exports = routerUsers;
